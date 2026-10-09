@@ -12,8 +12,15 @@ const c = (
   id: number,
   category: Category,
   title: string,
-  code: string
-): Course => ({ id, category, title, url: PAY + code });
+  code: string,
+  thumbnail?: string
+): Course => ({
+  id,
+  category,
+  title,
+  ...(thumbnail ? { thumbnail } : {}),
+  url: PAY + code,
+});
 
 /**
  * NOTE: the payment codes below were read from a cropped screenshot.
@@ -22,16 +29,16 @@ const c = (
  */
 export const COURSES: Course[] = [
   c(1, "Business Analysis", "Business Analysis Masterclass", "ziceq0zmf4"),
-  c(2, "Business Analysis", "Strategic Business Analysis Masterclass", "esomfznqoc"), // CHECK
-  c(3, "Business Analysis", "The 3 Ps of Business Analysis", "y5kt3hzc86"),
-  c(4, "Business Analysis", "Practical Strategies To Land A 6-Figure Business Analysis Job", "tye8nr75uz"),
-  c(5, "Business Analysis", "Land Your Business Analysis Job", "nlaqdukf1n"),
-  c(6, "Business Analysis", "Getting Hired as a Business Analyst Without Any Experience or Degree", "jjcj7xoae1"),
+  c(2, "Business Analysis", "Strategic Business Analysis Masterclass", "esomfznqoc", "image1.png"), // CHECK
+  c(3, "Business Analysis", "The 3 Ps of Business Analysis", "y5kt3hzc86", "2.png"),
+  c(4, "Business Analysis", "Practical Strategies To Land A 6-Figure Business Analysis Job", "tye8nr75uz", "4.jpg"),
+  c(5, "Business Analysis", "Land Your Business Analysis Job", "nlaqdukf1n", "5.png"),
+  c(6, "Business Analysis", "Getting Hired as a Business Analyst Without Any Experience or Degree", "jjcj7xoae1", "1.png"),
   c(7, "Business Analysis", "How To Land Your Business Analysis Job With Any Experience", "uutxzhfk73"),
   c(8, "Business Analysis", "Land Your 6-Figure Business Analysis Job", "div4ojc56r"),
-  c(9, "Business Analysis", "Unlock Your Career Potential: Master Business Analysis Skills", "f7qwdi3zuo"),
-  c(10, "Business Analysis", "Unlocking Global Career Opportunities with Business Analysis Skills", "unvj5tkxf3"),
-  c(11, "Business Analysis", "The 6-Figure Business Analyst Blueprint", "s0k2synxd5"),
+  c(9, "Business Analysis", "Unlock Your Career Potential: Master Business Analysis Skills", "f7qwdi3zuo", "unlock_your_career_pot.png"),
+  c(10, "Business Analysis", "Unlocking Global Career Opportunities with Business Analysis Skills", "unvj5tkxf3", "unlocking_global_career_opportunitie.png"),
+  c(11, "Business Analysis", "The 6-Figure Business Analyst Blueprint", "s0k2synxd5", "the_6_figure_business_analyst_blueprint.png"),
   c(12, "Career", "Career Accelerator Masterclass", "cv63ndazrn"),
   c(13, "Career", "Resume & LinkedIn Optimization", "os618rfe1d"),
   c(14, "Product & Data", "Practical Business Analysis and Project Management", "yvzv8rwriu"),
