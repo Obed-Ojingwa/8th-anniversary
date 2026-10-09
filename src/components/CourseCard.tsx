@@ -6,8 +6,11 @@ const EXTENSIONS = ["jpg", "png", "webp", "jpeg"];
 
 export default function CourseCard({ course }: { course: Course }) {
   const [extIndex, setExtIndex] = useState(0);
-  const missing = extIndex >= EXTENSIONS.length;
-  const src = `${import.meta.env.BASE_URL}thumbnails/${course.id}.${EXTENSIONS[extIndex]}`;
+  const imageFiles = course.thumbnail
+    ? [course.thumbnail]
+    : EXTENSIONS.map((extension) => `${course.id}.${extension}`);
+  const missing = extIndex >= imageFiles.length;
+  const src = `${import.meta.env.BASE_URL}thumbnails/${imageFiles[extIndex]}`;
 
   return (
     <article className="card">
@@ -22,7 +25,9 @@ export default function CourseCard({ course }: { course: Course }) {
         {missing ? (
           <div className="placeholder">
             <span className="placeholder-num">{course.id}</span>
-            <span className="placeholder-hint">thumbnails/{course.id}.jpg</span>
+            <span className="placeholder-hint">
+              thumbnails/{course.thumbnail ?? `${course.id}.jpg`}
+            </span>
           </div>
         ) : (
           <img
